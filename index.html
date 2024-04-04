@@ -1,0 +1,993 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="de" > 
+<head><title>Quantencomputing
+Und die Bedrohung fÃ&#x0133;r die Sicherheitstechnik</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="index.tex"> 
+<link rel="stylesheet" type="text/css" href="index.css"> 
+</head><body 
+>
+   <div class="maketitle">
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+
+<h2 class="titleHead">Quantencomputing<br />
+Und die Bedrohung für die Sicherheitstechnik</h2>
+<div class="author" ><span 
+class="ecrm-1440">Tobias Brandner, Deni A. Misaev</span></div><br />
+<div class="date" ><span 
+class="ecrm-1440">March 2024</span></div>
+   </div>
+   <div 
+class="abstract" 
+>
+   <h3 class="abstracttitle">
+<span 
+class="ecbx-1095">Zusammenfassung</span>
+</h3>
+      <!--l. 25--><p class="noindent" ><span 
+class="ecrm-1095">Aus der heutigen Welt ist Kryptographie fast nicht mehr wegzudenken - ob</span>
+      <span 
+class="ecrm-1095">beim Senden von Nachrichten auf Social Media, beim Zugriff auf das World</span>
+      <span 
+class="ecrm-1095">Wide Web oder bei der Bezahlung auf Online-Plattformen, Verschl</span><span 
+class="ecrm-1095">üsselung</span>
+      <span 
+class="ecrm-1095">versteckt sich in unserem Alltag </span><span 
+class="ecrm-1095">überall.</span>
+      <!--l. 27--><p class="noindent" ><span 
+class="ecrm-1095">Um so bedrohlicher wirkt eine kommende Technologie, die die Grundlagen</span>
+      <span 
+class="ecrm-1095">vieler Kryptographischen Verfahren bedroht: Quantencomputing.</span>
+      <!--l. 29--><p class="noindent" ><span 
+class="ecrm-1095">In diesem Paper werden zuerst die grundlegenden Konzepte und</span>
+      <span 
+class="ecrm-1095">Funktionsweisen des Quantencomputings erkl</span><span 
+class="ecrm-1095">ärt. Im zweiten Teil folgt dann</span>
+      <span 
+class="ecrm-1095">eine Einf</span><span 
+class="ecrm-1095">ührung in die Grundlagen der Kryptographie, ehe Gefahren durch</span>
+      <span 
+class="ecrm-1095">Quantencomputing und m</span><span 
+class="ecrm-1095">ögliche Post-Quantum Kryptographie diskutiert</span>
+      <span 
+class="ecrm-1095">werden.</span>
+      <!--l. 31--><p class="noindent" ><span 
+class="ecrm-1095">&#8212; Link zu den Files &amp; der Pr</span><span 
+class="ecrm-1095">äsentation &#8212;</span>
+      <!--l. 33--><p class="noindent" ><a 
+href="https://drive.google.com/drive/folders/1qzwYTCk7gxU0-I_943sJvX31GOQdxpMH?usp=drive_link" ><span 
+class="ecrm-1095">Hier klicken, oder:</span></a>
+      <!--l. 35--><p class="noindent" ><span 
+class="ecrm-1095">https://drive.google.com/drive/folders/1qzwYTCk7gxU0-I_943sJvX31GOQdxpMH?usp=drive_link</span>
+</div>
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>Inhaltsverzeichnis</h3>
+   <div class="tableofcontents">
+   <span class="sectionToc" >1 <a 
+href="#x1-20001" id="QQ2-1-2">Einleitung</a></span>
+<br />   <span class="sectionToc" >2 <a 
+href="#x1-30002" id="QQ2-1-3">Quantencomputing</a></span>
+<br />   <span class="subsectionToc" >2.1 <a 
+href="#x1-40002.1" id="QQ2-1-4">Klassische Computer</a></span>
+<br />   <span class="subsectionToc" >2.2 <a 
+href="#x1-50002.2" id="QQ2-1-5">Grundlagen des Quantencomputings</a></span>
+<br />   <span class="subsubsectionToc" >2.2.1 <a 
+href="#x1-60002.2.1" id="QQ2-1-6">Superposition</a></span>
+<br />   <span class="subsubsectionToc" >2.2.2 <a 
+href="#x1-70002.2.2" id="QQ2-1-8">Verschränkung</a></span>
+                                                                                 
+                                                                                 
+<br />   <span class="subsectionToc" >2.3 <a 
+href="#x1-80002.3" id="QQ2-1-9">Qubits</a></span>
+<br />   <span class="sectionToc" >3 <a 
+href="#x1-90003" id="QQ2-1-11">Kryptographie</a></span>
+<br />   <span class="subsectionToc" >3.1 <a 
+href="#x1-100003.1" id="QQ2-1-12">Arten der Verschlüsselung</a></span>
+<br />   <span class="subsubsectionToc" >3.1.1 <a 
+href="#x1-110003.1.1" id="QQ2-1-13">Symmetrische Kryptographie</a></span>
+<br />   <span class="subsubsectionToc" >3.1.2 <a 
+href="#x1-120003.1.2" id="QQ2-1-14">Asymmetrische Kryptographie</a></span>
+<br />   <span class="subsectionToc" >3.2 <a 
+href="#x1-130003.2" id="QQ2-1-16">Sicherheit von Verschlüsselungsmethoden</a></span>
+<br />   <span class="subsectionToc" >3.3 <a 
+href="#x1-140003.3" id="QQ2-1-18">Shor&#8217;s Algorithmus</a></span>
+<br />   <span class="subsectionToc" >3.4 <a 
+href="#x1-150003.4" id="QQ2-1-20">Folgen für die Kryptographie</a></span>
+<br />   <span class="subsectionToc" >3.5 <a 
+href="#x1-160003.5" id="QQ2-1-21">Post-Quantum Kryptographie</a></span>
+<br />   <span class="sectionToc" >4 <a 
+href="#x1-170004" id="QQ2-1-22">Zusammenfassung</a></span>
+   </div>
+                                                                                 
+                                                                                 
+   <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
+ id="x1-20001"></a>Einleitung</h3>
+<!--l. 45--><p class="noindent" >Kryptographie - die Disziplin, Verfahren zu entwickeln, um Nachrichten verschlüsseln und
+entschlüsseln zu können, und somit eine sichere Übertragung zu gewährleisten - blickt auf
+eine lange Geschichte zurück. <br 
+class="newline" />
+<!--l. 47--><p class="indent" >   Schon der römische Feldherr Julius Cäsar erkannte die Relevanz darin, Nachrichten
+verschlüsselt - und damit sicherer und geheim - zu übertragen. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> Mehr als 2000 Jahre
+später, während des ersten Weltkriegs, verschlüsselte die deutsche Wehrmacht ihre
+Nachrichten mit der Verschlüsselungsmaschine <span 
+class="ecti-1200">Enigma</span>. Zum Glück schaffte es ein
+britisches Team von Mathematikern rund um Alan Turing, dessen Verschlüsselung zu
+brechen und somit Informationen zu erhalten, die maßgeblich zum Sieg der Aliierten
+beitragen konnten. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> <br 
+class="newline" />
+<!--l. 49--><p class="indent" >   Aus der heutigen Welt ist Kryptographie fast nicht mehr wegzudenken - ob beim
+Senden von Nachrichten auf Social Media, beim Zugriff auf das World Wide Web oder bei
+der Bezahlung auf Online-Plattformen, Verschlüsselung versteckt sich in unserem Alltag
+überall.<br 
+class="newline" />Um so bedrohlicher wirkt eine kommende Technologie, die unsere momentane
+Kryptographie erheblich verändern könnte: Quantencomputing.<br 
+class="newline" />
+<!--l. 52--><p class="indent" >   Aktuelle Verschlüsselungsmethoden, die oftmals auf mathematischen Problemen
+basieren, die konventionelle Computer nur mit immens viel Zeit und Ressourcen lösen
+können, könnten von sogenannten <span 
+class="ecti-1200">Quantencomputern </span>theoretisch in wenigen Sekunden
+geknackt werden. <br 
+class="newline" />
+<!--l. 54--><p class="indent" >   In diesem Paper werden zuerst die grundlegenden Konzepte und Funktionsweisen des
+Quantencomputings erklärt. Im zweiten Teil folgt dann eine Einführung in die
+Grundlagen der Kryptographie, ehe Gefahren durch Quantencomputing und mögliche
+Post-Quantum Kryptographie diskutiert werden.
+                                                                                 
+                                                                                 
+   <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
+ id="x1-30002"></a>Quantencomputing</h3>
+<!--l. 60--><p class="noindent" ><span 
+class="ecti-1200">Quantencomputing </span>ist ein Konzept, das mittlerweile nicht mehr ausschließlich in
+Wissenschaftlichen Kreisen diskutiert wird sondern durchaus im Mainstream angelangt
+ist.<br 
+class="newline" />Heutzutage hat wahrscheinlich jeder Mensch von <span 
+class="ecti-1200">Quantencomputern </span>gehört, die schneller,
+besser und futuristischer als klassische Computer sein sollen. Der klassische Gedanke, den
+viele beim Thema Quantencomputing haben, ist folgender:
+<!--l. 63--><p class="indent" >
+      <blockquote class="quote">
+      <!--l. 64--><p class="noindent" ><span 
+class="ecti-1200">"Quantencomputer  sind  </span><span 
+class="ecti-1200">ähnlich  wie  klassische  Computer,  aber  Bits</span>
+      <span 
+class="ecti-1200">k</span><span 
+class="ecti-1200">önnen nicht nur die Werte 0 oder 1 annehmen sondern auch alle Werte</span>
+      <span 
+class="ecti-1200">dazwischen."</span></blockquote>
+<!--l. 67--><p class="indent" >   Das ist natürlich eine stark vereinfachte Aussage, die im Grunde genommen auch nicht
+komplett korrekt ist. Ziel des folgenden Kapitels über Quantencomputing ist, zu erklären
+was klassische Computer und Quantencomputer wirklich unterscheidet und einen
+Einblick in die spannendsten Konzepte, die Quantencomputing erst ermöglichen, zu
+geben.
+<!--l. 69--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">2.1   </span> <a 
+ id="x1-40002.1"></a>Klassische Computer</h4>
+<!--l. 71--><p class="noindent" >Die Funktionsweise eines klassischen Computers ist mittlerweile relativ bekannt.
+Klassische Computer sind vereinfacht gesagt viele tausende in Serie geschaltete <span 
+class="ecti-1200">logische</span>
+<span 
+class="ecti-1200">Operatoren</span>. Die meisten logischen Operatoren sind <span 
+class="ecti-1200">bin</span><span 
+class="ecti-1200">är</span>: Sie nehmen 2 <span 
+class="ecti-1200">Bits</span>, einen
+Datentyp der nur die Werte 0 und 1 annehmen kann, als Input und geben nach gewissen
+Regeln einen Bit, also entweder 0 oder 1, aus. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> <br 
+class="newline" />
+<!--l. 73--><p class="indent" >   Da der Computer auf Bit basiert, führt er Berechnungen auch nicht in unserem
+Zehner-System durch: Aus der Rechnung 99 + 76 macht der Computer 01100011 +
+01001100. Jede Berechnung führt dabei zu <span 
+class="ecti-1200">einem </span>Ergebnis. 99 + 76 ergibt 175 und keine
+andere Zahl. Dieser Punkt mag jetzt noch überflüssig wirken, er wird aber bei der
+Diskussion des Quantencomputers wichtig werden. <br 
+class="newline" />
+<!--l. 75--><p class="indent" >   Klassische Computer sind <span 
+class="ecti-1200">Turing-Vollst</span><span 
+class="ecti-1200">ändig</span>. Das bedeutet: Alles, was berechenbar
+ist, lässt sich von einem klassischen Computer berechnen, solange man ihm genug Zeit
+und Resourcen gibt. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> Diese Tatsache hat eine wichtige Folge: <br 
+class="newline" />Ein Quantencomputer kann nicht mehr Probleme lösen als ein klassischer Computer, er
+kann unter Umständen allerdings dieselben Probleme schneller lösen.
+<!--l. 78--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">2.2   </span> <a 
+ id="x1-50002.2"></a>Grundlagen des Quantencomputings</h4>
+<!--l. 80--><p class="noindent" >Quantencomputer ähneln in vieler Hinsicht klassischen Computern, unterscheiden sich
+allerdings schon auf der Bit-Ebene von ihnen:
+<!--l. 82--><p class="indent" >   Im Gegensatz zu klassischen Computern ist die kleinste Informationseinheit in
+Quantencomputern kein Bit, sonder ein sogenanntes <span 
+class="ecti-1200">Qubit</span>. Das Wort Qubit setzt sich
+                                                                                 
+                                                                                 
+dabei aus den Wörtern <span 
+class="ecti-1200">Quantum </span>und <span 
+class="ecti-1200">Bit </span>zusammen. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> Wie Qubits genau funktionieren,
+wird in einem späteren Kapitel erklärt. <br 
+class="newline" />
+<!--l. 84--><p class="indent" >   Auch bei Quantencomputern werden viele sogenannte <span 
+class="ecti-1200">quantum logic gates </span>in Serie
+geschaltet, was die Berechnung von beliebig komplexen Dingen ermöglicht. Außerdem
+sind Quantencomputer ebenfalls Turing-Vollständig. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+<!--l. 86--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">2.2.1   </span> <a 
+ id="x1-60002.2.1"></a>Superposition</h5>
+<!--l. 88--><p class="noindent" >Um Qubits zu verstehen, muss man zuerst das Phänomen verstehen, das man als
+"Kernstück"der Quantenmechanik bezeichnen könnte: Die <span 
+class="ecti-1200">Superposition</span>.<br 
+class="newline" />
+<!--l. 90--><p class="indent" >   Im Bereich der Quantenphysik verhalten sich Objekte anders, als Objekte in unserem
+Alltag. Am besten sieht man dieses Verhalten am berühmten <span 
+class="ecti-1200">Doppelspalt-Experiment</span>, das
+erstmals 1802 von Thomas Young durchgeführt wurde. Dabei wurde beobachtet, dass sich
+Photonen, die so wie auch Qubits mikroskopisch kleine Quantenmechanische
+Objekte sind, ohne beobachtet zu werden in einer Superposition befinden. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+<br 
+class="newline" />
+<!--l. 92--><p class="indent" >   Superposition bedeutet, dass sich das Quantensystem in mehreren Zuständen
+gleichzeitig befindet. Abbildung <a 
+href="#x1-60011">1<!--tex4ht:ref: fig:SchrÃ¶dinger --></a> zeigt das Gedankenexperiment von Schrödingers Katze:
+<br 
+class="newline" />In einer verschlossenen Box wird ein Atomkern platziert, der jeden Moment zerfallen
+könnte. Sobald der Atomkern zerfällt, wird eine Maschine ausgelöst, die eine Katze - die
+sich ebenfalls in der Box befindet - tötet. Solange wir das System beobachen, ist immer
+klar ob Schrödingers Katze lebendig oder tot ist. Verschließen wir die Box allerdings wird
+der Atomkern nicht mehr beobachtet und befindet sich in Superposition - er ist
+gleichzeitig intakt und zerfallen, und die Katze gleichzeitig lebendig und tot.
+<span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+<!--l. 96--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                                 
+                                                                                 
+<a 
+ id="x1-60011"></a>
+                                                                                 
+                                                                                 
+<!--l. 98--><p class="noindent" ><img 
+src="PICS/Schrodinger.jpg" alt="PIC"  
+width="298" height="298" >
+<br /> <div class="caption" 
+><span class="id">Abbildung&#x00A0;1:  </span><span  
+class="content">Solange  man  keine  Messung  vornimmt,  ist  Schrödingers  Katze
+gleichzeitig tot und lebendig. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span></span></div><!--tex4ht:label?: x1-60011 -->
+                                                                                 
+                                                                                 
+<!--l. 101--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 103--><p class="indent" >   Erst wenn wir wir eine Messung am System durchführen, also in die Box
+hineinschauen, entscheidet sich der Atomkern, ob er intakt oder zerfallen ist. Man spricht
+hierbei vom Kollaps der Superposition <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>.
+   <h5 class="subsubsectionHead"><span class="titlemark">2.2.2   </span> <a 
+ id="x1-70002.2.2"></a>Verschränkung</h5>
+<!--l. 107--><p class="noindent" >Das zweite wichtige Phänomen der Quantenphysik ist die <span 
+class="ecti-1200">Verschr</span><span 
+class="ecti-1200">änkung</span>. Wenn zwei oder
+mehr Quantenmechanische Systeme <span 
+class="ecti-1200">verschr</span><span 
+class="ecti-1200">änkt </span>sind, hängen ihre Zustände fundamental
+zusammen. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> <br 
+class="newline" />Auch dieses Phänomen kann man sich gut am Beispiel Schrödingers Katze vorstellen.
+Hierbei bilden Katze und Atomkern ein verschränktes System: Der Zerfall des Atomkerns
+und der Tod der Katze hängen zusammen - es kann nicht nur einer der beiden Ereignisse
+eintreten. <br 
+class="newline" />
+<!--l. 110--><p class="indent" >   Wo genau der Quantenbereich aufhört und der Bereich der normalen Physik beginnt
+ist Wissenschaftlern noch heute nicht ganz klar. Eine Sache ist jedoch sicher: Qubits fallen
+in den Bereich der Quantenphysik und zeigen dadurch die beiden eben erwähnten
+Eigenschaften.
+<!--l. 112--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">2.3   </span> <a 
+ id="x1-80002.3"></a>Qubits</h4>
+<!--l. 114--><p class="noindent" >Die wichtigste Erkenntnis um Quantencomputing zu verstehen ist, dass sich auch Qubits
+bevor sie gemessen werden in Superposition befinden. Qubits befinden sich also
+gleichzeitig im Zustand 0 und 1, und man kann mit ihnen auch in Superposition rechnen.
+<span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> <br 
+class="newline" />
+<!--l. 116--><p class="indent" >   In Tabelle <a 
+href="#x1-80011">1<!--tex4ht:ref: tab:QubitRechnung --></a> stellt das Symbol <img 
+src="index0x.png" alt="&#x0398;  " class="math"> (Theta) ein Qubit dar. Benutzt man
+zwei miteinander Verschränkte Qubits in einer Rechnung, wie hier in <img 
+src="index1x.png" alt="&#x0398; &#x0398;  " class="math"> * 2,
+wird gleichzeitig mit allen Varianten der beiden Qubits (also 00, 01, 10 und 11)
+gerechnet.
+   <div class="table">
+                                                                                 
+                                                                                 
+<!--l. 118--><p class="indent" >   <a 
+ id="x1-80011"></a><hr class="float"><div class="float" 
+>
+                                                                                 
+                                                                                 
+<div class="tabular"> <table id="TBL-2" class="tabular" 
+ 
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1"><col 
+id="TBL-2-2"><col 
+id="TBL-2-3"><col 
+id="TBL-2-4"><col 
+id="TBL-2-5"></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-1"  
+class="td11"><img 
+src="index2x.png" alt="&#x0398; &#x0398;  " class="math"></td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-2"  
+class="td11"> * </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-3"  
+class="td11"> 2 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-4"  
+class="td11">=</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-5"  
+class="td11"> ?  </td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-1"  
+class="td11"> &#8212; </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-2"  
+class="td11">&#8212;</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-3"  
+class="td11">&#8212;</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-4"  
+class="td11">&#8212;</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-5"  
+class="td11"> &#8212;</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-1"  
+class="td11">  00   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-2"  
+class="td11"> * </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-3"  
+class="td11"> 2 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-4"  
+class="td11">=</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-5"  
+class="td11">000</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-1"  
+class="td11">  01   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-2"  
+class="td11"> * </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-3"  
+class="td11"> 2 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-4"  
+class="td11">=</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-5"  
+class="td11">010</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-5-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-1"  
+class="td11">  10   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-2"  
+class="td11"> * </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-3"  
+class="td11"> 2 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-4"  
+class="td11">=</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-5"  
+class="td11">100</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-6-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-1"  
+class="td11">  11   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-2"  
+class="td11"> * </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-3"  
+class="td11"> 2 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-4"  
+class="td11">=</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-5"  
+class="td11">110</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-7-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-7-1"  
+class="td11">     </td></tr></table>                                                                        </div>
+<br /> <div class="caption" 
+><span class="id">Tabelle&#x00A0;1: </span><span  
+class="content">Eine Rechnung mit zwei Qubits liefert als Ergebnis eine Überlagerung
+von 4 möglichen Lösungen</span></div><!--tex4ht:label?: x1-80011 -->
+                                                                                 
+                                                                                 
+   </div><hr class="endfloat" />
+   </div>
+<!--l. 132--><p class="indent" >   Man beachte hierbei allerdings, dass man sich das Ergebnis der Berechnung <img 
+src="index3x.png" alt="&#x0398; &#x0398;  " class="math"> * 2
+nicht als Liste vorstellen darf! Wie bereits im Kapitel zur Superposition erklärt, existieren
+all diese Zustände nur dann parallel, wenn wir sie nicht messen. Wenn man hier eine
+Messung am Ergebnis durchführen würde, würde man <span 
+class="ecti-1200">zuf</span><span 
+class="ecti-1200">ällig </span>eine der möglichen
+Antworten (000, 010, 100, 110) zurückbekommen. <br 
+class="newline" />
+<!--l. 134--><p class="indent" >   Tatsächlich ist es uns nicht möglich, mehr als eine Lösung aus einer Quanten-Berechnung
+zu bekommen. In einem späteren Kapitel wird jedoch an einem konkreten Beispiel ein
+Algorithmus gezeigt werden, mit dem wir uns andere nützliche Informationen aus unserer
+Lösungsmenge zurückgeben lassen können.<br 
+class="newline" />
+<!--l. 136--><p class="indent" >   Ein riesiger Vorteil von Quantencomputing fällt sofort auf: Mit einem Qubit
+können zwei Berechnungen gleichzeitig durchgeführt werden, mit 2 Qubits 4 und
+mit 3 Qubits schon 8. Ein n-Qubit Quantencomputer kann <img 
+src="index4x.png" alt=" n
+2  " class="math"> Berechnungen
+gleichzeitig durchführen. Dieses exponentielle Wachstum bedeutet, dass für die Lösung
+einiger komplexer Probleme schon einige tausend Qubits ausreichen könnten.
+<span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+                                                                                 
+                                                                                 
+   <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
+ id="x1-90003"></a>Kryptographie</h3>
+<!--l. 142--><p class="noindent" >Wie bereits erwähnt beschäftigt sich die Kryptographie damit, Verfahren zu entwickeln
+um Nachrichten verschlüsseln und entschlüsseln zu können und damit eine sichere und
+geheime Übertragung von einem Sender zu einem Empfänger zu gewährleisten.
+Die unverschlüsselte Nachricht wir dabei <span 
+class="ecti-1200">Plaintext </span>genannt, die verschlüsselte
+Nachricht <span 
+class="ecti-1200">Cyphertext</span>. Man nimmt dabei an, dass unerwünschte Lauscher dabei
+Zugriff auf Übertragungskanäle - und somit auch auf den Cyphertext haben. Die
+Herausforderung bei der Kryptographie liegt also nicht darin, Übertragungswege oder
+Verschlüsselungsverfahren geheim zu halten, sondern darin, einen möglichst schwer zu
+brechenden Schlüssel zu verwenden. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> <br 
+class="newline" />
+<!--l. 144--><p class="indent" >   Man geht zusätzlich davon aus, dass Drittparteien nur beschränkte Ressourcen zur
+Verfügung stehen um abgefangene Cyphertexte zu entschlüsseln. Kann ein Schlüssel von
+aktuellen Computern erst in 100.000 Jahren gebrochen werden, kann man davon
+ausgehen, dass er sicher ist. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> <br 
+class="newline" />Mit immer besser werdenden klassischen Rechnern reicht es meist, einfach den
+Schlüssel einer Kryptographischen Methode länger zu machen um eine vergleichbare
+Sicherheit zu gewährleisten. Nicht aber mit Quantencomputing. Während das
+brechen von RSA-Schlüsseln mit klassischen Computern mehrere Millionen Jahre
+dauern würde, könnte ein Quantencomputer das selbe in wenigen Sekunden
+schaffen.
+<!--l. 147--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">3.1   </span> <a 
+ id="x1-100003.1"></a>Arten der Verschlüsselung</h4>
+<!--l. 149--><p class="noindent" >Wir unterscheiden generell zwei Arten der Kryptographie: Symmetrische &amp; Asymmetrische
+Kryptographie. In den folgenden zwei Unterkapiteln werden diese zwei Arten vorgestellt
+und erklärt.
+<!--l. 151--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">3.1.1   </span> <a 
+ id="x1-110003.1.1"></a>Symmetrische Kryptographie</h5>
+<!--l. 153--><p class="noindent" >Symmetrische Kryptographie ist die allgemein bekanntere und einfacher zu verstehende
+der beiden Varianten. In der symmetrischen Kryptographie verwenden Sender und
+Empfänger denselben geheimen Schlüssel und denselben kryptografischen Algorithmus,
+um Daten zu verschlüsseln und zu entschlüsseln. <br 
+class="newline" />
+<!--l. 155--><p class="indent" >   Ein einfaches Beispiel dafür ist der sogenannte <span 
+class="ecti-1200">Shift-Cipher</span>. Bei diesem werden die
+Buchstaben im Plaintext einfach um eine gewisse Anzahl an Buchstaben (zu
+Demonstrationszwecken genannt <span 
+class="ecti-1200">z</span>) verschoben. Wenn z = 3 ist, wird so A zu D, B zu E
+und so weiter. Diese spezifische Art der Verschlüsselung ist eine der ältesten uns
+bekannten kryptographischen Methoden. Der Römische Feldherr Julius Caesar
+nutzte das System mit z = 3, sein Nachfolger Augustus dann mit z = 4. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+<br 
+class="newline" />
+<!--l. 157--><p class="indent" >   Symmetrisch ist diese Art der Kryptographie deshalb, weil Sender und Empfänger
+dieselben Informationen benötigen, in unserem Beispiel die Anzahl der verschobenen
+Buchstaben, um zu verschlüsseln beziehungsweise entschlüsseln. <br 
+class="newline" />
+                                                                                 
+                                                                                 
+<!--l. 159--><p class="indent" >   Symmetrische Verschlüsselungsmethoden eignen sich hervorragend zum verschlüsseln
+von Daten, allerdings gibt es ein großes Problem: Beide Parteien müssen den Schlüssel
+kennen. In früheren Zeiten war das kein Problem, da Kryptographie großteils dem Militär
+und der Politik vorbehalten war, doch heutzutage wäre das arbeiten mit solchen
+Methoden in vielen Fällen undenkbar:
+<!--l. 161--><p class="indent" >   Wenn Person A Person B über das Internet eine Nachricht schickt, können sie sich
+nicht einfach auf einen gemeinsamen Schlüssel einigen. Dieser müsste zuvor entweder
+über einen unverschlüsselten Kanal geschickt werden, was die Sinnhaftigkeit der
+Verschlüsselung wesentlich einschränken würde, oder persönlich übergeben werden, was
+wiederum Vorteile durch Digitalisierung und des Internets zunichte machen würde. Es
+brauchte also neue Methoden, und genau diese liefert die asymmetrische Kryptographie.
+<span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+<!--l. 163--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">3.1.2   </span> <a 
+ id="x1-120003.1.2"></a>Asymmetrische Kryptographie</h5>
+<!--l. 165--><p class="noindent" >Bei der Asymmetrischen Kryptographie, oft auch <span 
+class="ecti-1200">Public-Key Kryptographie </span>genannt,
+werden zum ver- und entschlüsseln nicht derselbe Schlüssel verwendet. Stattdessen
+besitzt jeder Nutzer mehrere <span 
+class="ecti-1200">Private-Keys</span>, die er selbst kennt, und aus der mit
+Rechnungen ein öffentlich sichtbarer <span 
+class="ecti-1200">Public-Key </span>berechnet wird. Ein Sender kann eine
+Nachricht dann zwar mit dem Public-Key des Empfängers verschlüsseln, um den
+Cyphertext dann wieder zu entschlüsseln werden aber die Private-Keys benötigt. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+<br 
+class="newline" />
+<!--l. 167--><p class="indent" >   Asymmetrische Kryptographie funktioniert hauptsächlich deswegen, weil manche
+Probleme rechnerisch nur in sehr langer Zeit lösbar sind. Ein gutes Beispiel ist die
+public-Key Verschlüsselungsmethode RSA. Bei RSA (benannt nach dessen Erfindern
+Rivest, Shamir und Adleman) sind die Private-Keys <span 
+class="ecti-1200">x </span>und <span 
+class="ecti-1200">y </span>riesig große Primzahlen. Der
+Public-Key <span 
+class="ecti-1200">z </span>wird einfach durch Multiplikation der beiden Private-Keys berechnet. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+<br 
+class="newline" />
+<!--l. 169--><p class="indent" >   Diese Methode ist deshalb so beliebt, da die Berechnung des Public-Keys extrem
+einfach ist, es auf der anderen Seite aber fast unmöglich ist, die Private-Keys aus
+dem Public-Key zu schließen. Das liegt an der Schwierigkeit, riesige Zahlen in
+ihre Primfaktoren zu zerlegen. Es ist Mathematisch bewiesen, dass selbst die
+besten Algorithmen für die Primfaktorzerlegung großer Zahlen ewig brauchen.
+<br 
+class="newline" />
+<!--l. 171--><p class="indent" >   Tabelle <a 
+href="#x1-120012">2<!--tex4ht:ref: tab:RSA-250 --></a> zeigt die größte Zahl, die jemals in ihre Primfaktoren zerlegt wurde:
+RSA-250. Zehntausende Rechner arbeiteten 2019 bis 2020 mehrere Monate lang weltweit
+an der Berechnung - nach etwa 2700 CPU-Jahren wurde dann eine Lösung gefunden. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+<span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+   <div class="table">
+                                                                                 
+                                                                                 
+<!--l. 174--><p class="indent" >   <a 
+ id="x1-120012"></a><hr class="float"><div class="float" 
+>
+                                                                                 
+                                                                                 
+<div class="tabular"> <table id="TBL-3" class="tabular" 
+ 
+><colgroup id="TBL-3-1g"><col 
+id="TBL-3-1"></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-3-1-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-1"  
+class="td11">641352894770715802787901901705773890848250</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-2-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-1"  
+class="td11"> 147429434472081168596320245323446302386235</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-3-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-1"  
+class="td11"> 98752668347708737661925585694639798853367 </td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-4-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-1"  
+class="td11"> <img 
+src="index5x.png" alt="&#x00D7; " class="math"></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-5-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-1"  
+class="td11"> 244624208838318150567813139024002896653802 </td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-6-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-1"  
+class="td11"> 092578931401452041221336558477095178155258</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-7-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-1"  
+class="td11">   218897735030590669041302045908071447     </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-8-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-1"  
+class="td11">                    =                               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-9-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-9-1"  
+class="td11"> 124620366781718784065835044608106590434820 </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-10-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-10-1"  
+class="td11"> 374651678805754818788883289666801188210855 </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-11-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-11-1"  
+class="td11"> 036039570272508747509864768438458621054865 </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-12-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-12-1"  
+class="td11"> 537970253930571891217684318286362846948405 </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-13-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-13-1"  
+class="td11"> 301614416430468066875699415246993185704183 </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-14-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-14-1"  
+class="td11">      030512549594371372159029236099          </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-15-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-15-1"  
+class="td11">                                         </td></tr></table>                               </div>
+<br /> <div class="caption" 
+><span class="id">Tabelle&#x00A0;2: </span><span  
+class="content">RSA-250: Die größte Zahl, die jemals in ihre Primfaktoren zerlegt wurde.</span></div><!--tex4ht:label?: x1-120012 -->
+                                                                                 
+                                                                                 
+   </div><hr class="endfloat" />
+   </div>
+   <h4 class="subsectionHead"><span class="titlemark">3.2   </span> <a 
+ id="x1-130003.2"></a>Sicherheit von Verschlüsselungsmethoden</h4>
+<!--l. 197--><p class="noindent" >Wie man also sieht sind aktuelle Verschlüsselungsmethoden durchaus noch sehr sicher.
+Heutzutage werden bei der RSA-Verschlüsselung auch meist größere Schlüssel als 250
+Zeichen genutzt, was sie in realistischer Zeit unknackbar macht. <br 
+class="newline" />
+<!--l. 199--><p class="indent" >   Ein ausreichend großer Quantencomputer könnte allerdings die Sicherheit, gerade von
+Asymmetrischen Algorithmen erheblich verringern. Diese basieren wie erwähnt auf
+Problemen, die auf konventionellen Computern schwer zu lösen sind, die aber durch die
+parallele Rechenleistung von Quantencomputern immens beschleunigt werden könnten.
+<br 
+class="newline" />
+<!--l. 201--><p class="indent" >   Tabelle <a 
+href="#x1-130013">3<!--tex4ht:ref: tab:Algo-Vergleich --></a> zeigt die Sicherheit von Verschlüsselungsmethoden vor und nach dem
+Quantencomputer. Die oberen vier Methoden sind Symmetrische Verschlüsselungsverfahren.
+Man sieht dass ihre Sicherheit nach dem Erscheinen eines Quantencomputers von einem
+sicheren Wert über 80 sofort auf 0 abstürzt. Die unteren beiden Verfahren sind
+Symmetrische Verschlüsselungsmethoden. Sie werden zwar nicht so stark durch
+Quantencomputing betroffen, AES-128 aber rutscht auf ein Sicherheitslevel unter 80, was
+als unsicher gilt. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+   <div class="table">
+                                                                                 
+                                                                                 
+<!--l. 203--><p class="indent" >   <a 
+ id="x1-130013"></a><hr class="float"><div class="float" 
+>
+                                                                                 
+                                                                                 
+<div class="tabular"> <table id="TBL-4" class="tabular" 
+ 
+><colgroup id="TBL-4-1g"><col 
+id="TBL-4-1"></colgroup><colgroup id="TBL-4-2g"><col 
+id="TBL-4-2"></colgroup><colgroup id="TBL-4-3g"><col 
+id="TBL-4-3"></colgroup><colgroup id="TBL-4-4g"><col 
+id="TBL-4-4"></colgroup><colgroup id="TBL-4-5g"><col 
+id="TBL-4-5"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-1-"><td  style="white-space:nowrap; text-align:center;" id="TBL-4-1-1"  
+class="td11">          </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-1-2"  
+class="td11">       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-1-3"  
+class="td11">       </td><td colspan="2" style="white-space:nowrap; text-align:center;" id="TBL-4-1-4"  
+class="td11">         <div class="multicolumn"  style="white-space:nowrap; text-align:center;">Sicherheitslevel mit...</div>              </td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-2-"><td  style="white-space:nowrap; text-align:center;" id="TBL-4-2-1"  
+class="td11">Algorithmus</td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-2-2"  
+class="td11"> Typ </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-2-3"  
+class="td11"> Länge </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-2-4"  
+class="td11">klassischen Rechnern</td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-2-5"  
+class="td11">Quantencomputern</td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-3-"><td  style="white-space:nowrap; text-align:center;" id="TBL-4-3-1"  
+class="td11"> RSA-1024  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-3-2"  
+class="td11"> Symm. </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-3-3"  
+class="td11">1024 Bit</td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-3-4"  
+class="td11">        80            </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-3-5"  
+class="td11">        0            </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-4-"><td  style="white-space:nowrap; text-align:center;" id="TBL-4-4-1"  
+class="td11"> RSA-2048  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-4-2"  
+class="td11"> Symm. </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-4-3"  
+class="td11">2048 Bit</td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-4-4"  
+class="td11">       112            </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-4-5"  
+class="td11">        0            </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-5-"><td  style="white-space:nowrap; text-align:center;" id="TBL-4-5-1"  
+class="td11"> ECC-256  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-5-2"  
+class="td11"> Symm. </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-5-3"  
+class="td11"> 256 Bit </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-5-4"  
+class="td11">       128            </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-5-5"  
+class="td11">        0            </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-6-"><td  style="white-space:nowrap; text-align:center;" id="TBL-4-6-1"  
+class="td11"> ECC-384  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-6-2"  
+class="td11"> Symm. </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-6-3"  
+class="td11"> 384 Bit </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-6-4"  
+class="td11">       256            </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-6-5"  
+class="td11">        0            </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-7-"><td  style="white-space:nowrap; text-align:center;" id="TBL-4-7-1"  
+class="td11"> AES-128  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-7-2"  
+class="td11">Asymm.</td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-7-3"  
+class="td11"> 128 Bit </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-7-4"  
+class="td11">       128            </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-7-5"  
+class="td11">       64           </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-8-"><td  style="white-space:nowrap; text-align:center;" id="TBL-4-8-1"  
+class="td11"> AES-256  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-8-2"  
+class="td11">Asymm.</td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-8-3"  
+class="td11"> 256 Bit </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-8-4"  
+class="td11">       256            </td><td  style="white-space:nowrap; text-align:center;" id="TBL-4-8-5"  
+class="td11">       128          </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-9-"><td  style="white-space:nowrap; text-align:center;" id="TBL-4-9-1"  
+class="td11">          </td></tr></table>                                                                   </div>
+<br />                                                                       <div class="caption" 
+><span class="id">Tabelle&#x00A0;3:
+</span><span  
+class="content">Vergleich bekannter Verschlüsselungsalgorithmen. Ab einem Sicherheitslevel von 80
+gilt ein Algorithmus als sicher. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span></span></div><!--tex4ht:label?: x1-130013 -->
+                                                                                 
+                                                                                 
+   </div><hr class="endfloat" />
+   </div>
+   <h4 class="subsectionHead"><span class="titlemark">3.3   </span> <a 
+ id="x1-140003.3"></a>Shor&#8217;s Algorithmus</h4>
+<!--l. 224--><p class="noindent" >Wie bereits im Kapitel <span 
+class="ecti-1200">Quantencomputing </span>erwähnt, besteht die Schwierigkeit im Lösen
+von Problemen mit dem Quantencomputer darin, geeignete Algorithmen zu finden, die
+nützliche Daten aus der Lösungsmenge filtern können. Der wohl wichtigste Algorithmus
+in der jungen Geschichte des Quantencomputings ist <span 
+class="ecti-1200">Shor&#8217;s Algorithmus</span>. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+<br 
+class="newline" />
+<!--l. 226--><p class="indent" >   Mit Shor&#8217;s Algorithmus kann die Primfaktorzerlegung großer Zahlen, die auf
+tausenden klassischen Computern tausende CPU-Jahre brauchen würde, auf einem
+Quantencomputer in wenigen Sekunden durchgeführt werden. Der Algorithmus arbeitet
+wiefolgt: <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> <br 
+class="newline" />
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 228--><p class="noindent" >Sei <span 
+class="ecti-1200">N </span>die Nummer, die faktorisiert werden soll
+      </li>
+      <li class="itemize">
+      <!--l. 229--><p class="noindent" >Wähle <span 
+class="ecti-1200">x</span>, sodass 1 <span 
+class="cmmi-12">&#x003C; </span>x <span 
+class="cmmi-12">&#x003C; </span><span 
+class="ecti-1200">N - 1</span>
+      </li>
+      <li class="itemize">
+      <!--l. 230--><p class="noindent" >Rechne <span 
+class="ecti-1200">x </span>hoch 0, 1, ..., <span 
+class="ecti-1200">N</span>
+      </li>
+      <li class="itemize">
+      <!--l. 231--><p class="noindent" >Dividiere <span 
+class="cmmi-12">x</span><sup><span 
+class="cmr-8">0</span></sup><span 
+class="cmmi-12">,x</span><sup><span 
+class="cmr-8">1</span></sup><span 
+class="cmmi-12">,...,x</span><sup><span 
+class="cmmi-8">N</span></sup> durch <span 
+class="ecti-1200">N </span>und speichere den Rest
+      </li>
+      <li class="itemize">
+      <!--l. 232--><p class="noindent" >In   den   Resten   ergibt   sich   eine   periodische   Sequenz.   Extrahiere   die
+      Periodendauer <span 
+class="ecti-1200">p </span>mit der Quanten-Fourier-Transformation
+      </li>
+      <li class="itemize">
+      <!--l. 233--><p class="noindent" >Überprüfe, ob <span 
+class="cmmi-12">F </span><span 
+class="cmr-12">= </span><span 
+class="cmmi-12">x</span><sup><span 
+class="cmmi-8">p&#x2215;</span><span 
+class="cmr-8">2</span></sup><span 
+class="cmsy-10x-x-120">-</span><span 
+class="cmr-12">1 </span>ein Faktor ist. Wenn nicht, wiederhole mit anderem
+      <span 
+class="ecti-1200">x</span>.</li></ul>
+<!--l. 236--><p class="indent" >   Da dieser Algorithmus sehr abstrakt und weit entfernt von üblichen verfahren ist,
+erkannt man auch bei mehrmaligem lesen nicht, wie er funktionieren soll. Aus diesem
+Grund wird der Algorithmus im folgendenden mit einem Beispiel vereinfacht erklärt:
+<br 
+class="newline" />
+                                                                                 
+                                                                                 
+<!--l. 238--><p class="indent" >   Sei die Zahl, die Faktorisiert werden soll <span 
+class="ecti-1200">N </span>= 15. Wir sehen natürich sofort, dass 15
+das Produkt aus den Primzahlen 3 und 5 ist. Nun wenden wir Shor&#8217;s Algorithmus an, um
+hoffentlich zum selben Ergebnis zu kommen. <br 
+class="newline" />
+<!--l. 240--><p class="indent" >   Wir wählen nach den oben beschriebenen Regeln <span 
+class="ecti-1200">x </span>= 2. Für alle <span 
+class="cmr-12">0 </span><span 
+class="cmsy-10x-x-120">&#x2264; </span><span 
+class="cmmi-12">n </span><span 
+class="cmsy-10x-x-120">&#x2264; </span><span 
+class="cmmi-12">N </span>berechnen
+wir <span 
+class="cmr-12">2</span><sup><span 
+class="cmmi-8">n</span></sup> und anschließend <span 
+class="cmr-12">2</span><sup><span 
+class="cmmi-8">n</span></sup> <span 
+class="ecti-1200">mod N</span>. Tabelle <a 
+href="#x1-140014">4<!--tex4ht:ref: tab:shor --></a> zeigt anschaulich einige Ergebnisse dieser
+Rechnungen. <br 
+class="newline" />
+   <div class="table">
+                                                                                 
+                                                                                 
+<!--l. 242--><p class="indent" >   <a 
+ id="x1-140014"></a><hr class="float"><div class="float" 
+>
+                                                                                 
+                                                                                 
+<div class="tabular"> <table id="TBL-5" class="tabular" 
+ 
+><colgroup id="TBL-5-1g"><col 
+id="TBL-5-1"></colgroup><colgroup id="TBL-5-2g"><col 
+id="TBL-5-2"></colgroup><colgroup id="TBL-5-3g"><col 
+id="TBL-5-3"></colgroup><colgroup id="TBL-5-4g"><col 
+id="TBL-5-4"></colgroup><colgroup id="TBL-5-5g"><col 
+id="TBL-5-5"></colgroup><colgroup id="TBL-5-6g"><col 
+id="TBL-5-6"></colgroup><colgroup id="TBL-5-7g"><col 
+id="TBL-5-7"></colgroup><colgroup id="TBL-5-8g"><col 
+id="TBL-5-8"></colgroup><colgroup id="TBL-5-9g"><col 
+id="TBL-5-9"></colgroup><colgroup id="TBL-5-10g"><col 
+id="TBL-5-10"></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-5-1-"><td  style="white-space:nowrap; text-align:center;" id="TBL-5-1-1"  
+class="td11">   Rechnungen     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-1-2"  
+class="td11"><span 
+class="cmr-12">2</span><sup><span 
+class="cmr-8">0</span></sup></td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-1-3"  
+class="td11"><span 
+class="cmr-12">2</span><sup><span 
+class="cmr-8">1</span></sup></td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-1-4"  
+class="td11"><span 
+class="cmr-12">2</span><sup><span 
+class="cmr-8">2</span></sup></td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-1-5"  
+class="td11"><span 
+class="cmr-12">2</span><sup><span 
+class="cmr-8">3</span></sup></td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-1-6"  
+class="td11"><span 
+class="cmr-12">2</span><sup><span 
+class="cmr-8">4</span></sup></td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-1-7"  
+class="td11"><span 
+class="cmr-12">2</span><sup><span 
+class="cmr-8">5</span></sup></td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-1-8"  
+class="td11"><span 
+class="cmr-12">2</span><sup><span 
+class="cmr-8">6</span></sup></td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-1-9"  
+class="td11"> <span 
+class="cmr-12">2</span><sup><span 
+class="cmr-8">7</span></sup> </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-1-10"  
+class="td11">...</td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-2-"><td  style="white-space:nowrap; text-align:center;" id="TBL-5-2-1"  
+class="td11">   Ergebnis <span 
+class="cmr-12">2</span><sup><span 
+class="cmmi-8">n</span></sup>      </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-2-2"  
+class="td11"> 1 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-2-3"  
+class="td11"> 2 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-2-4"  
+class="td11"> 4 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-2-5"  
+class="td11"> 8 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-2-6"  
+class="td11">16</td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-2-7"  
+class="td11">32</td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-2-8"  
+class="td11">64</td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-2-9"  
+class="td11">128</td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-2-10"  
+class="td11">...</td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-3-"><td  style="white-space:nowrap; text-align:center;" id="TBL-5-3-1"  
+class="td11">Ergebnis <span 
+class="cmr-12">2</span><sup><span 
+class="cmmi-8">n</span></sup> <span 
+class="ecti-1200">mod 15</span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-3-2"  
+class="td11"> 1 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-3-3"  
+class="td11"> 2 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-3-4"  
+class="td11"> 4 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-3-5"  
+class="td11"> 8 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-3-6"  
+class="td11"> 1 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-3-7"  
+class="td11"> 2 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-3-8"  
+class="td11"> 4 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-3-9"  
+class="td11"> 8  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-5-3-10"  
+class="td11">...</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-5-4-"><td  style="white-space:nowrap; text-align:center;" id="TBL-5-4-1"  
+class="td11">                 </td></tr></table>                                                           </div>
+<br /> <div class="caption" 
+><span class="id">Tabelle&#x00A0;4: </span><span  
+class="content">Die Ergebnisse der Rechnungen nach Shor&#8217;s Algorithmus. Man beachte
+die periodische Sequenz, insbesondere das periodische Wiederauftreten von 1. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span></span></div><!--tex4ht:label?: x1-140014 -->
+                                                                                 
+                                                                                 
+   </div><hr class="endfloat" />
+   </div>
+<!--l. 255--><p class="indent" >   Es fällt sofort auf, dass sich die Zahlenfolge 1 - 2 - 4 - 8 immer wieder wiederholt. Man
+muss allerdings wieder bedenken, dass uns diese Lösungsmenge nicht zugänglich ist.
+Würden wir jetzt eine Messung am System vornehmen, würden wir völlig zufällig
+entweder 1, 2, 4 oder 8 als Ergebnis bekommen, was uns nicht weiterhilft.<br 
+class="newline" />
+<!--l. 257--><p class="indent" >   Wie Bereits im Kapitel über das Quantencomputing angekündigt, gibt es allerdings
+eine Möglichkeit, sich Informationen aus periodischen Lösungsmengen zu holen: Mit der
+sogenannten Quanten-Fourier-Transformation können wir die Frequenz (bzw.
+Periodendauer) des Auftretens einer bestimmten Zahl in dieser Lösungsmenge
+bestimmen. Da für jedes <span 
+class="ecti-1200">x </span>gilt, dass <span 
+class="cmmi-12">x</span><sup><span 
+class="cmr-8">0</span></sup> <span 
+class="cmr-12">= 1</span>, wissen wir, dass die 1 sicher in unserer
+Lösungsmenge, und damit sicher periodisch vorkommt - also machen wir eine
+Quanten-Fourier-Transformation auf die Zahl 1. Diese gibt uns als Periodendauer
+<br 
+class="newline" />p = 4 zurück. <br 
+class="newline" />
+<!--l. 259--><p class="indent" >   Nun können wir <span 
+class="cmmi-12">x </span><span 
+class="cmr-12">= 2 </span>und <span 
+class="cmmi-12">p </span><span 
+class="cmr-12">= 4 </span>in die Formel <span 
+class="cmmi-12">F </span><span 
+class="cmr-12">= </span><span 
+class="cmmi-12">x</span><sup><span 
+class="cmmi-8">p&#x2215;</span><span 
+class="cmr-8">2</span></sup> <span 
+class="cmsy-10x-x-120">- </span><span 
+class="cmr-12">1 </span>einsetzen. Berechnung
+von <span 
+class="cmmi-12">F </span><span 
+class="cmr-12">= 2</span><sup><span 
+class="cmr-8">4</span><span 
+class="cmmi-8">&#x2215;</span><span 
+class="cmr-8">2</span></sup> <span 
+class="cmsy-10x-x-120">- </span><span 
+class="cmr-12">1 </span>ergibt F = 3. Nach der Überprüfung stellen wir fest, dass 3 tatsächlich
+ein Primfaktor von 15 ist. Damit haben wir erfolgreich eine Primfaktorzerlegung mit
+Shor&#8217;s Algorithmus durchgeführt. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> <br 
+class="newline" />
+<!--l. 261--><p class="indent" >   Diese lange Berechnung mag für <span 
+class="cmmi-12">N </span><span 
+class="cmr-12">= 15 </span>zwar unnötig kompliziert wirken, wie aber
+bereits erwähnt wächst die Rechenleistung mit größerer Anzahl Qubits exponentiell,
+wodurch der zusätzliche Aufwand an Qubits je größer die Zahl wird geringer
+wird.
+   <h4 class="subsectionHead"><span class="titlemark">3.4   </span> <a 
+ id="x1-150003.4"></a>Folgen für die Kryptographie</h4>
+<!--l. 265--><p class="noindent" >Da die meisten heute genutzten Public-Key Algorithmen entweder wie RSA aud der
+Primfaktorisierung oder auf diskreten Logarithmen basieren, die beide leicht von Shor&#8217;s
+Algorithmus gebrochen werden können, würden mit dem Bau eines ausreichend großen
+Quantencomputers alle Asymmetrischen Kryptographie-Verfahren unsicher werden. Das
+Faktorisieren einer 1024-Bit RSA Verschlüsselung würde einen etwa 2000 Qubit fassenden
+Quantencomputer benötigen. <br 
+class="newline" />
+<!--l. 267--><p class="indent" >   Es gibt noch einen weiteren Algorithmus, <span 
+class="ecti-1200">Grover&#8217;s Algorithmus</span>, der auch die
+Sicherheit von Symmetrischen Algorithmen verringert. Wie allerdings zuvor in Tabelle <a 
+href="#x1-130013">3<!--tex4ht:ref: tab:Algo-Vergleich --></a>
+zu sehen bleiben diese, solange sie groß genug sind im allgemeinen sicher. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+<br 
+class="newline" />
+<!--l. 269--><p class="indent" >   Schon jetzt könnten verschlüsselte Daten gesammelt und gespeichert werden, die
+mithilfe eines Quantencomputers in der Zukunft in kürzester Zeit entschlüsselt werden
+könnten. In Folge dessen sind neue Algorithmen gefragt, die nicht so leicht von
+Quantencomputern gebrochen werden können.
+<!--l. 271--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">3.5   </span> <a 
+ id="x1-160003.5"></a>Post-Quantum Kryptographie</h4>
+                                                                                 
+                                                                                 
+<!--l. 273--><p class="noindent" >Es wird bereits jetzt an neuen mathematischen Ansätzen für Asymmetrische
+Kryptographische Methoden gearbeitet, die Quantensicher sein sollen. Diese sollen zum
+Beispiel statt auf Primfaktorisierung auf Matrixmultiplikationen, Multivariten Polynomen
+oder Hashing-Algorithmen basieren. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> <br 
+class="newline" />
+<!--l. 275--><p class="indent" >   Ein Nachteil, den sich die meisten dieser neuen Algorithmen teilen, ist dass viel
+größere Schlüssel als zuvor notwendig sind. Der neu entwickelte Algorithmus <span 
+class="ecti-1200">NTRU</span>
+braucht für ein Sicherheitslevel von 128-Bit einen 12881-Bit langen Schlüssel, RSA-2048
+kommt für ähnliche Sicherheit mit 2048 Bit aus. <br 
+class="newline" />Eine weitere Möglichkeit für erhöhte Sicherheit ist die Verwendung von symmetrischen
+Algorithmen mit längeren Schlüsseln. <br 
+class="newline" />
+<!--l. 278--><p class="indent" >   Auch mit der Quantenmechanik selbst wird in Zukunft die Sicherheit von Daten
+gewährleistet werden können. Zum Beispiel kann erkannt werden, ob eine verschickte
+Quanten-Nachricht von einer Drittperson abgehört wurde, da dann sofort die
+Superposition kollabieren würde.
+<!--l. 280--><p class="indent" >   Desweiteren Funktioniert die Verschränkung von Qubits völlig unabhängig
+von ihrer Entfernung. So könnten zwei Quantencomputer an unterschiedlichen
+Standorten theoretisch miteinander Verschränkt sein und somit Daten ohne wirklichen
+"Übertragungsweg"übertragen werden. <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+                                                                                 
+                                                                                 
+   <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
+ id="x1-170004"></a>Zusammenfassung</h3>
+<!--l. 286--><p class="noindent" >Quantencomputer werden auf uns zukommen und die Welt der Kryptographie, und damit
+auch unseren Alltag fundamental verändern. <br 
+class="newline" />
+<!--l. 288--><p class="indent" >   Während Einrichtungen, die mit Symmetrischen Algorithmen arbeiten können mit
+ausreichend langen Schlüsseln weiterhin sicher sind, ist gerade die Privatsphäre von
+Privatnutzern, die auf Asymmetrische Kryptographie vertrauen müssen, gefährdet.
+<br 
+class="newline" />
+<!--l. 290--><p class="indent" >   Aus diesem Grund ist es wichtig, dass schon vor dem ersten großen Quantencomputer
+an neuen, quantensicheren Algorithmen und Verschlüsselungsmethoden gearbeitet wird.
+Zum Glück wurden mit einigen Ansätzen schon erste Durchbrüche in Richtung
+Quantensicherheit gemacht, die sich ohne Zweifel in Zukunft noch weiter Verbessern
+werden. <br 
+class="newline" />
+<!--l. 292--><p class="indent" >   Bei weiterem Interesse ist der im IJACSA erschienene Artikel <span 
+class="ecti-1200">The Impact of</span>
+<span 
+class="ecti-1200">Quantum Computing on Present Cryptography </span><span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> zu empfehlen. Dieser geht noch
+etwas weiter in die Themen Quantencomputing und Post-Quanten-Algorithmen
+ein.
+<!--l. 294--><p class="indent" >   <span 
+class="ecti-1200">Referenz zu anderen Publikationstypen: </span><span class="cite">[<span 
+class="ecbx-1200">?</span>]</span> <span class="cite">[<span 
+class="ecbx-1200">?</span>]</span>
+                                                                                 
+                                                                                 
+    
+</body></html> 
+
+                                                                                 
+
+

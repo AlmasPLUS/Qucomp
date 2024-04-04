@@ -1,0 +1,24 @@
+\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi 
+\doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-1000}{QQ2-1-1}{Inhaltsverzeichnis}}{3}\relax 
+\doTocEntry\tocsection{1}{\csname a:TocLink\endcsname{1}{x1-20001}{QQ2-1-2}{Einleitung}}{5}\relax 
+\doTocEntry\tocsection{2}{\csname a:TocLink\endcsname{1}{x1-30002}{QQ2-1-3}{Quantencomputing}}{6}\relax 
+\doTocEntry\tocsubsection{2.1}{\csname a:TocLink\endcsname{1}{x1-40002.1}{QQ2-1-4}{Klassische Computer}}{6}\relax 
+\doTocEntry\tocsubsection{2.2}{\csname a:TocLink\endcsname{1}{x1-50002.2}{QQ2-1-5}{Grundlagen des Quantencomputings}}{6}\relax 
+\doTocEntry\tocsubsubsection{2.2.1}{\csname a:TocLink\endcsname{1}{x1-60002.2.1}{QQ2-1-6}{Superposition}}{7}\relax 
+\doTocEntry\toclof{1}{\csname a:TocLink\endcsname{1}{x1-60011}{}{\ignorespaces Solange man keine Messung vornimmt, ist Schrödingers Katze gleichzeitig tot und lebendig. \cite  {ImgSchrodinger}}}{figure}\relax 
+\doTocEntry\tocsubsubsection{2.2.2}{\csname a:TocLink\endcsname{1}{x1-70002.2.2}{QQ2-1-8}{Verschränkung}}{10}\relax 
+\doTocEntry\tocsubsection{2.3}{\csname a:TocLink\endcsname{1}{x1-80002.3}{QQ2-1-9}{Qubits}}{10}\relax 
+\doTocEntry\toclot{1}{\csname a:TocLink\endcsname{1}{x1-80011}{}{\ignorespaces Eine Rechnung mit zwei Qubits liefert als Ergebnis eine Überlagerung von 4 möglichen Lösungen}}{table}\relax 
+\doTocEntry\tocsection{3}{\csname a:TocLink\endcsname{1}{x1-90003}{QQ2-1-11}{Kryptographie}}{14}\relax 
+\doTocEntry\tocsubsection{3.1}{\csname a:TocLink\endcsname{1}{x1-100003.1}{QQ2-1-12}{Arten der Verschlüsselung}}{14}\relax 
+\doTocEntry\tocsubsubsection{3.1.1}{\csname a:TocLink\endcsname{1}{x1-110003.1.1}{QQ2-1-13}{Symmetrische Kryptographie}}{14}\relax 
+\doTocEntry\tocsubsubsection{3.1.2}{\csname a:TocLink\endcsname{1}{x1-120003.1.2}{QQ2-1-14}{Asymmetrische Kryptographie}}{15}\relax 
+\doTocEntry\toclot{2}{\csname a:TocLink\endcsname{1}{x1-120012}{}{\ignorespaces RSA-250: Die größte Zahl, die jemals in ihre Primfaktoren zerlegt wurde.}}{table}\relax 
+\doTocEntry\tocsubsection{3.2}{\csname a:TocLink\endcsname{1}{x1-130003.2}{QQ2-1-16}{Sicherheit von Verschlüsselungsmethoden}}{18}\relax 
+\doTocEntry\toclot{3}{\csname a:TocLink\endcsname{1}{x1-130013}{}{\ignorespaces Vergleich bekannter Verschlüsselungsalgorithmen. Ab einem Sicherheitslevel von 80 gilt ein Algorithmus als sicher. \cite  {mavroeidis2018impact}}}{table}\relax 
+\doTocEntry\tocsubsection{3.3}{\csname a:TocLink\endcsname{1}{x1-140003.3}{QQ2-1-18}{Shor's Algorithmus}}{21}\relax 
+\doTocEntry\toclot{4}{\csname a:TocLink\endcsname{1}{x1-140014}{}{\ignorespaces Die Ergebnisse der Rechnungen nach Shor's Algorithmus. Man beachte die periodische Sequenz, insbesondere das periodische Wiederauftreten von 1. \cite  {mavroeidis2018impact}}}{table}\relax 
+\doTocEntry\tocsubsection{3.4}{\csname a:TocLink\endcsname{1}{x1-150003.4}{QQ2-1-20}{Folgen für die Kryptographie}}{25}\relax 
+\doTocEntry\tocsubsection{3.5}{\csname a:TocLink\endcsname{1}{x1-160003.5}{QQ2-1-21}{Post-Quantum Kryptographie}}{25}\relax 
+\doTocEntry\tocsection{4}{\csname a:TocLink\endcsname{1}{x1-170004}{QQ2-1-22}{Zusammenfassung}}{27}\relax 
+\par 
